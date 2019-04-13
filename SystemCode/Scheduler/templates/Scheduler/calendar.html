@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title Page-->
+    <title>{% block title %}Yoga Class{% endblock %}</title>
+    {% block css %}
+    <!-- Icons font CSS-->
+    <link href="{% static 'Recommender/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet"
+          media="all">
+    <link href="{% static 'Recommender/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet"
+          media="all">
+    <!-- Font special for pages-->
+    <link href=https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
+    <!-- Full Calendar CSS-->
+    <link href="{% static 'Recommender/packages/core/main.css' %}" rel="stylesheet">
+    <link href="{% static 'Recommender/packages/daygrid/main.css' %}" rel="stylesheet">
+    <link href="{% static 'Recommender/packages/timegrid/main.css' %}" rel="stylesheet">
+    <link href="{% static 'Recommender/packages/bootstrap/main.css' %}" rel="stylesheet">
+    <link href="{% static 'Recommender/packages/list/main.css' %}" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'Recommender/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Recommender/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'Recommender/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'Recommender/css/main.css' %}" rel="stylesheet" media="all">
+
+    <!-- My CSS -->
+    <link href="{% static 'Recommender/mycss/calendar.css' %}" rel="stylesheet">
+
+    {% endblock %}
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+            plugins: [ 'dayGrid','interaction', 'resourceDayGrid', 'resourceTimeGrid' ],
+            timeZone: 'UTC',
+            defaultView: 'resourceTimeGridDay',
+            editable: true,
+            selectable: true,
+            eventLimit: true, // allow "more" link when too many events
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'resourceTimeGridDay,resourceTimeGridTwoDay,timeGridWeek,dayGridMonth'
+            },
+            views: {
+                resourceTimeGridTwoDay: {
+                type: 'resourceTimeGrid',
+                duration: { days: 2 },
+                buttonText: '2 days',
+                }
+            },
+
+            resources: [
+                { id: 'a', title: 'Room Yama' },
+                { id: 'b', title: 'Room Asana', eventColor: 'green' },
+                { id: 'c', title: 'Room Niyama', eventColor: 'orange' },
+                { id: 'd', title: 'Room Drishti', eventColor: 'red' },
+
+            ],
+
+              events: [
+                  {
+                    id: '1',
+                    resourceId: 'a',
+                    title: 'Class A',
+                    start: '2019-04-13 10:15',
+                    end: '2019-04-13 11:15'
+                  },
+                  {
+                    id: '2',
+                    resourceId: 'b',
+                    title: 'Class B',
+                    start: '2019-04-13 13:30',
+                    end: '2019-04-13 14:30'
+                  }
+            ]
+        });
+
+        calendar.render();
+      });
+
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="center_div">
+
+  <h1 style="font-family:Helvetica Neue; color:#1646b7; font-size: 30px;">Optimun Class Schedule</h1>
+
+</div>
+        <div id='calendar'></div>
+
+
+<!-- Jquery JS-->
+<script src="{% static 'Recommender/vendor/jquery/jquery.min.js' %}"></script>
+<!-- Vendor JS-->
+<script src="{% static 'Recommender/vendor/select2/select2.min.js' %}"></script>
+<script src="{% static 'Recommender/vendor/datepicker/moment.min.js' %}"></script>
+<script src="{% static 'Recommender/vendor/datepicker/daterangepicker.js' %}"></script>
+
+<!-- Full Calendar JS-->
+<script src="{% static 'Recommender/packages/core/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/daygrid/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/timegrid/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/resource-common/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/resource-daygrid/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/resource-timegrid/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/interaction/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/bootstrap/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/rrule/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/list/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/luxon/main.js' %}"></script>
+<script src="{% static 'Recommender/packages/moment/main.js' %}"></script>
+
+
+
+
+<!-- Main JS-->
+<script src="{% static 'Recommender/js/global.js' %}"></script>
+
+</body>
+
+</html>
+<!-- end document-->

@@ -1,0 +1,23 @@
+{% extends "Recommender/base.html" %}
+{% block css %}
+    <style>
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 200;
+        }
+    </style>
+{% endblock %}
+
+{% block form %}
+    <form action="{% url 'Recommender:calendar' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="text-center">
+            <button class="btn btn--radius-2 btn--blue" type="submit">Start</button>
+        </div>
+
+        <div id='calendar'></div>
+
+    </form>
+
+{% endblock %}
