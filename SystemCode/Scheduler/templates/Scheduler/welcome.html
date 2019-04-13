@@ -1,4 +1,4 @@
-{% extends "Recommender/base.html" %}
+{% extends "Scheduler/base.html" %}
 {% block css %}
     <style>
         .lead {
@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block form %}
-    <form action="{% url 'Recommender:calendar' %}" method="POST">
+    <form action="{% url 'Scheduler:calendar' %}" method="POST">
         {% csrf_token %}
 
         <div class="text-center">
