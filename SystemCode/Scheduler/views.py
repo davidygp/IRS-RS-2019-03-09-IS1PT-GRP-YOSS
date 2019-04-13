@@ -11,7 +11,7 @@ def welcome(request):
 
 def calendar(request):
     # This is the first html page    
-    }
+
     return render(request, 'Scheduler/calendar.html')
 
 def file(request):
