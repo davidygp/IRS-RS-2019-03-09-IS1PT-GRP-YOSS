@@ -22,10 +22,20 @@ html, body {
     margin-right: 60px;
     text-align: center;
     vertical-align: middle;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif
 
 }
 
  .fc-today{
  	background: transparent !important;
+ }
+
+ .box{
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 80px;
+     right: 50%;
+     width:400px;
+
+
  }

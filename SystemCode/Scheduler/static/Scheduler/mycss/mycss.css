@@ -286,3 +286,12 @@
   align-items: center;
   margin-bottom: 40px;
 }
+
+.my-custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    height: calc(2.25rem + 2px);
+    margin-top: 10px;
+    opacity: 0;
+}
