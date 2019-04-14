@@ -53,20 +53,25 @@
 <div class="box">
 
 
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
+    <div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile" name="document">
+    <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
 
+    <button class="btn btn--radius-2 btn--blue" type="submit" >Upload</button>
 
+  </form>
 
+    <form method="post" enctype="multipart/form-data">
 
+    </form>
 
 </div>
 
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="document">
-    <button type="submit">Upload</button>
-  </form>
 
 
 
