@@ -18,10 +18,15 @@ def calendar(request):
 
 def file(request):
     # This is the first html page
-    if request.method == 'POST':
+    if request.method == 'POST' and request.FILES['document']:
         uploaded_file = request.FILES['document']
         fs = FileSystemStorage()
         fs.save(uploaded_file.name, uploaded_file)
 
+
+    return render(request, 'Scheduler/file.html')
+
+def file1(request):
+    # This is the first html page
 
     return render(request, 'Scheduler/file.html')

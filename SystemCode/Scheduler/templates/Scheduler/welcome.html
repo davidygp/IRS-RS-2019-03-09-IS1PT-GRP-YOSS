@@ -9,14 +9,12 @@
 {% endblock %}
 
 {% block form %}
-    <form action="{% url 'Scheduler:calendar' %}" method="POST">
+    <form action="{% url 'Scheduler:file' %}" method="GET">
         {% csrf_token %}
 
         <div class="text-center">
             <button class="btn btn--radius-2 btn--blue" type="submit">Start</button>
         </div>
-
-        <div id='calendar'></div>
 
     </form>
 

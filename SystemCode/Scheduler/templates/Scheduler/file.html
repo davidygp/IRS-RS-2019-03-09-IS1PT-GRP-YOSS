@@ -43,17 +43,21 @@
 
 <body>
 
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+    <div class="wrapper wrapper--w790">
+        <div class="card card-5">
+
 <div class="center_div">
 
-  <h1 style="font-family:Helvetica Neue; color:#1646b7; font-size: 30px;">Please Upload your file</h1>
+  <h1 style="font-family:Helvetica Neue; color:#1646b7; font-size: 25px;">Please Upload your Yoga Data File</h1>
 
 </div>
 
 
-<div class="box">
 
 
-  <form method="post" enctype="multipart/form-data">
+
+  <form action="{% url 'Scheduler:calendar' %}" method="post" enctype="multipart/form-data" class="box center_div" >
     {% csrf_token %}
 
     <div class="custom-file">
@@ -61,17 +65,16 @@
     <label class="custom-file-label" for="customFile">Choose file</label>
     </div>
 
-    <button class="btn btn--radius-2 btn--blue" type="submit" >Upload</button>
-
-  </form>
-
-    <form method="post" enctype="multipart/form-data">
+    <button class="btn btn--radius-2 btn--blue mtop" type="submit" >Upload</button>
 
     </form>
 
+
+
 </div>
+    </div>
 
-
+</div>
 
 
 

@@ -19,7 +19,7 @@ html, body {
 
 .center_div{
     margin-top: 50px;
-    margin-right: 60px;
+    margin-right: 0px;
     text-align: center;
     vertical-align: middle;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif
@@ -33,9 +33,12 @@ html, body {
  .box{
      margin-left: auto;
      margin-right: auto;
-     margin-top: 80px;
+     margin-top: 50px;
      right: 50%;
      width:400px;
+ }
 
-
+ .mtop{
+     margin-top: 30px;
+     margin-bottom: 30px;
  }
