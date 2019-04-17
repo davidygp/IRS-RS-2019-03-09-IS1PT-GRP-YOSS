@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-import os
+import pandas as pd
 
 # Create your views here.
 
@@ -21,7 +21,13 @@ def calendar(request):
         fs.save(uploaded_file.name, uploaded_file)
 
     file_location = ''.join([fs.location, '/', uploaded_file.name])
+    
     print(file_location)
+
+    df = pd.read_excel(file_location)
+    
+#    print(df.columns)
+#    print(df['MasterName'][0])
 
     return render(request, 'Scheduler/calendar.html')
 
