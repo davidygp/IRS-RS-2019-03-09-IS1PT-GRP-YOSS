@@ -24,25 +24,19 @@
     <link href="{% static 'Scheduler/packages/timegrid/main.css' %}" rel="stylesheet">
     <link href="{% static 'Scheduler/packages/bootstrap/main.css' %}" rel="stylesheet">
     <link href="{% static 'Scheduler/packages/list/main.css' %}" rel="stylesheet">
-
     <!-- Vendor CSS-->
     <link href="{% static 'Scheduler/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'Scheduler/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'Scheduler/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'Scheduler/vendor/scss/css/_custom-forms.scss' %}" rel="stylesheet">
-
     <!-- Main CSS-->
     <link href="{% static 'Scheduler/css/main.css' %}" rel="stylesheet" media="all">
-
     <!-- My CSS -->
     <link href="{% static 'Scheduler/mycss/calendar.css' %}" rel="stylesheet">
-
     {% endblock %}
     <script>
-
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-
         var calendar = new FullCalendar.Calendar(calendarEl, {
             schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
             plugins: [ 'dayGrid','interaction', 'resourceDayGrid', 'resourceTimeGrid' ],
@@ -63,50 +57,37 @@
                 buttonText: '2 days',
                 }
             },
-
             resources: [
                 { id: 'a', title: 'Room Yama' },
                 { id: 'b', title: 'Room Asana', eventColor: 'green' },
                 { id: 'c', title: 'Room Niyama', eventColor: 'orange' },
                 { id: 'd', title: 'Room Drishti', eventColor: 'red' },
-
             ],
-
+            
             events: {{temp.events|safe}}
-        });
 
+        });
         calendar.render();
       });
-
-
     </script>
-
 </head>
-
 <body>
-
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
     <div class="wrapper wrapper--w790">
         <div class="card card-5">
-
-
 <div class="center_div">
-
   <h1 style="font-family:Helvetica Neue; color:#1646b7; font-size: 30px;">Optimun Class Schedule</h1>
-
 </div>
         <div id='calendar'></div>
         </div>
     </div>
 </div>
-
 <!-- Jquery JS-->
 <script src="{% static 'Scheduler/vendor/jquery/jquery.min.js' %}"></script>
 <!-- Vendor JS-->
 <script src="{% static 'Scheduler/vendor/select2/select2.min.js' %}"></script>
 <script src="{% static 'Scheduler/vendor/datepicker/moment.min.js' %}"></script>
 <script src="{% static 'Scheduler/vendor/datepicker/daterangepicker.js' %}"></script>
-
 <!-- Full Calendar JS-->
 <script src="{% static 'Scheduler/packages/core/main.js' %}"></script>
 <script src="{% static 'Scheduler/packages/daygrid/main.js' %}"></script>
@@ -120,14 +101,8 @@
 <script src="{% static 'Scheduler/packages/list/main.js' %}"></script>
 <script src="{% static 'Scheduler/packages/luxon/main.js' %}"></script>
 <script src="{% static 'Scheduler/packages/moment/main.js' %}"></script>
-
-
-
-
 <!-- Main JS-->
 <script src="{% static 'Scheduler/js/global.js' %}"></script>
-
 </body>
-
 </html>
 <!-- end document-->
