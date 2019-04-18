@@ -3,6 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 import pandas as pd
+import html
 
 # Create your views here.
 
@@ -29,7 +30,26 @@ def calendar(request):
 #    print(df.columns)
 #    print(df['MasterName'][0])
 
-    return render(request, 'Scheduler/calendar.html')
+    context = {
+    'events': [
+    {
+    'id': '3',
+    'resourceId': 'c',
+    'title': 'Class C',
+    'start': '2019-04-18 11:00',
+    'end': '2019-04-18 12:00'
+    },
+    {
+    'id': '4',
+    'resourceId': 'd',
+    'title': 'Class D',
+    'start': '2019-04-18 16:00',
+    'end': '2019-04-18 17:00'
+    }
+    ]
+    }
+
+    return render(request, 'Scheduler/calendar.html', {'temp':context})
 
 def file(request):
     # This is the first html page

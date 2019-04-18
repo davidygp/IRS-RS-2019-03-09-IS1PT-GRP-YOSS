@@ -72,22 +72,7 @@
 
             ],
 
-              events: [
-                  {
-                    id: '1',
-                    resourceId: 'a',
-                    title: 'Class A',
-                    start: '2019-04-13 10:15',
-                    end: '2019-04-13 11:15'
-                  },
-                  {
-                    id: '2',
-                    resourceId: 'b',
-                    title: 'Class B',
-                    start: '2019-04-13 13:30',
-                    end: '2019-04-13 14:30'
-                  }
-            ]
+            events: {{temp.events|safe}}
         });
 
         calendar.render();
