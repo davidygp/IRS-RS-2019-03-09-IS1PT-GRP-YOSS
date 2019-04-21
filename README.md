@@ -1,6 +1,6 @@
 # SECTION 1 : PROJECT TITLE
 ### Yoga Class Scheduling System
-<img width="812" alt="welcome" src="https://user-images.githubusercontent.com/48171290/54080819-80836a80-4333-11e9-9f1d-7f21123d454f.png">
+<img width="812" alt="start_screen" src="https://user-images.githubusercontent.com/31118924/56471865-fd087d80-6489-11e9-96b6-113ff8c7145a.PNG">
 
 # SECTION 2 : EXECUTIVE SUMMARY / PAPER ABSTRACT
 With the overwhelming welcome for the yoga activity, A * yoga has opened its 5th new yoga studio in Singapore recently. It targets to provide 100+ different styles of yoga classes every week with experienced yoga masters and well decorated yoga rooms to customers. However, with the various yoga classes, complicated yoga master skills and available dates, it is very troublesome to plan a weekly yoga class schedule.
