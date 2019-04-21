@@ -16,9 +16,9 @@ Our team learned a lot in the process of working on this project. We got the cha
 | Official Full Name | Student ID (MTech Applicable)| Work Items (Who Did What) | Email (Optional) |
 | :---: | :---: | :---: | :---: |
 | LI DUO  | A0195364W | Business idea generation, UI Design | e0384995@u.nus.edu |
-| LIM CHONG SENG HERMANN | A0195392U | Business idea generation, Django web framework | e0385023@u.nus.edu |
+| LIM CHONG SENG HERMANN | A0195392U | Business idea generation, Django web framework, Overall integration | e0385023@u.nus.edu |
 | LU JIAHAO | A0091835Y | Business idea generation, KIE server design, OptaPlanner rules, project video | e0384293@u.nus.edu |
-| YAM GUI PENG DAVID | A0195315A | Business idea generation, KIE server design, OptaPlanner rules | e0384946@u.nus.edu |
+| YAM GUI PENG DAVID | A0195315A | Business idea generation, KIE server design, OptaPlanner rules, Overall integration | e0384946@u.nus.edu |
 | ZHAO YAZHI | A0195305E | Business idea generation, domain expert interview, data gathering and preparation, project report | e0384936@u.nus.edu |
 
 # SECTION 4 : VIDEO OF SYSTEM MODELLING & USE CASE DEMO
