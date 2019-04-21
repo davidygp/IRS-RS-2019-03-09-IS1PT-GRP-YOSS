@@ -36,11 +36,13 @@ Installing Virtual Box:
 http://bit.ly/iss-vm-v18a ( part 1 about 13 GB in file size )
 
 http://bit.ly/iss-vm-v18b ( part 2 about 13 GB in file size )
+
 3. Start Virtualbox software
 4. Click File -> Import Appliance
 5. Click Start to use iss-vm
 
 Import the files:
+
 $ git clone https://github.com/davidygp/IRS-RS-2019-03-09-IS1PT-GRP-YOSS
 
 Setup of KIE Server:
@@ -50,12 +52,17 @@ Setup of KIE Server:
 4. Deploy the Project YogaClassScheduler-3
 
 Setup of Python Environment:
+
 $ pip install pandas
+
 $ pip install django
+
 $ pip install requests
 
 Start the Python django server:
+
 $ cd ./IRS-RS-2019-03-09-IS1PT-GRP-YOS/SystemCode
+
 $ python manage.py runserver
 
 Go to URL using web browser http://127.0.0.1:8000/
