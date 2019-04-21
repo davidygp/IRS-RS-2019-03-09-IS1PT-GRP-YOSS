@@ -32,7 +32,9 @@ Our team learned a lot in the process of working on this project. We got the cha
 Installing Virtual Box:
 1. Download and install Virtualbox software: https://www.virtualbox.org/wiki/Downloads
 2. Download and iss-vm virtual machine (an Appliance) from:
+
 http://bit.ly/iss-vm-v18a ( part 1 about 13 GB in file size )
+
 http://bit.ly/iss-vm-v18b ( part 2 about 13 GB in file size )
 3. Start Virtualbox software
 4. Click File -> Import Appliance
