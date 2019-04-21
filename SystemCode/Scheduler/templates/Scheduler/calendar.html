@@ -57,12 +57,7 @@
                 buttonText: '2 days',
                 }
             },
-            resources: [
-                { id: 'a', title: 'Room Yama' },
-                { id: 'b', title: 'Room Asana', eventColor: 'green' },
-                { id: 'c', title: 'Room Niyama', eventColor: 'orange' },
-                { id: 'd', title: 'Room Drishti', eventColor: 'red' },
-            ],
+            resources: {{temp.resources|safe}},
             
             events: {{temp.events|safe}}
 

@@ -1,14 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 import pandas as pd
 import html
 import requests
+import xml.etree.ElementTree as ET
+from os import path
+import os
 
 # Create your views here.
 
 debug = True
+colour_list = ['green', 'orange', 'red', 'blue', 'pink', 'black', 'purple']
+number_to_letter_mapping = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
 
 def welcome(request):
     # This is the first html page    
@@ -17,34 +22,36 @@ def welcome(request):
 def calendar(request):
     # This is the first html page    
 
+#    os.system(“ls”)
+
     if request.method == 'POST' and request.FILES['document']:
         uploaded_file = request.FILES['document']
         fs = FileSystemStorage()
+        os.system("rm -rf " + fs.location)
         fs.save(uploaded_file.name, uploaded_file)
 
     file_location = ''.join([fs.location, '/', uploaded_file.name])
-    
 #    print(file_location)
 
+    '''
     context = {
-
     'resources': [
-                { 'id': 'a', 'title': 'Room Yama' },
-                { 'id': 'b', 'title': 'Room Asana', 'eventColor': 'green' },
-                { 'id': 'c', 'title': 'Room Niyama', 'eventColor': 'orange' },
-                { 'id': 'd', 'title': 'Room Drishti', 'eventColor': 'red' },
-            ],
-
+    { 'id': 'a', 'title': 'Room Yama' },
+    { 'id': 'b', 'title': 'Room Asana', 'eventColor': 'green' },
+    { 'id': 'c', 'title': 'Room Niyama', 'eventColor': 'orange' },
+    { 'id': 'd', 'title': 'Room Drishti', 'eventColor': 'red' },
+    ],
+ 
     'events': [
     {
-    'id': '3',
+    'id': '0',
     'resourceId': 'c',
     'title': 'Class C',
     'start': '2019-04-21 11:00',
     'end': '2019-04-21 12:00'
     },
     {
-    'id': '4',
+    'id': '1',
     'resourceId': 'd',
     'title': 'Class D',
     'start': '2019-04-21 16:00',
@@ -52,17 +59,20 @@ def calendar(request):
     }
     ]
     }
+    '''
+    print(request.session) 
 
     xml = writePostXML(file_location)
-
+    # print(xml)
     if request.session["optaplanner_started"] == False:
         PUTResponse = doPUTRequest()
         if str(PUTResponse.status_code)[0] == "2":
             print('PUT: response:2**')
             request.session["optaplanner_started"] = True
             POSTResponse = doPOSTRequest(xml)
-            print('poststatuecode1:', POSTResponse.status_code)
-            print('poststatuecode2:', POSTResponse.text)
+            print('poststatuscode1:', POSTResponse.status_code)
+            request.session["problem_posted"] = True
+#            print('poststatuscode2:', POSTResponse.text)
         else:
             print('PUT: response:not2**')
             print(PUTResponse.status_code)
@@ -73,14 +83,121 @@ def calendar(request):
             request.session["optaplanner_started"] = True
             POSTResponse = doPOSTRequest(xml)
             print('New status code is', PUTResponse.status_code)
-    
-    if str(POSTResponse.status_code)[0] == "2":
-        print('doGet')
-        GETResponse = doGETRequest()
-        print('getstatuecode1:', GETResponse.status_code)
-        print('getstatuecode2:', GETResponse.text)
+            request.session["problem_posted"] = True
 
-    return render(request, 'Scheduler/calendar.html', {'temp':context})
+    if request.session["problem_posted"] == False:
+        if str(POSTResponse.status_code)[0] == "2":
+            print('doGet')
+            GETResponse = doGETRequest()
+            score = checkScore(GETResponse.text)
+            if 'init' in score:
+                print('foundinit1')
+                context = {'resources': [],'events': []}
+                return calendar(request)
+            else:
+                print("I'm here")
+                resourceDict = XMLParseToJSONResource(GETResponse.text)
+                eventsDict = XMLParseToJSONEvents(GETResponse.text)
+                context = {'resources': resourceDict,'events': eventsDict}
+
+    if request.session["problem_posted"] == True:
+        GETResponse = doGETRequest()
+        score = checkScore(GETResponse.text)
+        status = checkSolving(GETResponse.text)
+        if 'init' in score:
+            print('foundinit2')
+            context = {'resources': [],'events': []}
+            return calendar(request)
+        else:
+            resourceDict = XMLParseToJSONResource(GETResponse.text)
+            eventsDict = XMLParseToJSONEvents(GETResponse.text)
+            print("It's not in initialisation phase")
+            if eventsDict[0]['title'] == '1':
+                return calendar(request)
+            else:
+                context = {'resources': resourceDict,'events': eventsDict}
+                print(score)
+                print(context)
+
+    return render(request, 'Scheduler/calendar.html', {'temp': context})
+
+def checkScore(xmlString):
+    root = ET.fromstring(xmlString)
+    score = '1'
+    for item in root.iter('best-solution'):
+        for item_childSolver in item:
+            if item_childSolver.tag == 'score':
+                score = item_childSolver.text
+                print("scoretext:", item_childSolver.text)
+    print("score:", score)
+    return score
+
+def checkSolving(xmlString):
+    root = ET.fromstring(xmlString)
+    for item in root.iter('status'):
+        status = item.text
+    print("status:", status)
+    return status
+
+def XMLParseToJSONResource(xmlString):
+    root = ET.fromstring(xmlString)
+    
+    resourcesList = []
+    for item in root.iter('roomList'):
+        dictContext = {}
+        for item_childRoom in item:
+            if item_childRoom.tag == 'id':
+                dictContext['id'] = number_to_letter_mapping[int(item_childRoom.text)]
+                dictContext['eventColor'] = colour_list[int(item_childRoom.text)]
+            if item_childRoom.tag == 'roomName':
+                dictContext['title'] = item_childRoom.text
+        resourcesList.append(dictContext)
+    
+#    print(resourcesList)
+    return resourcesList
+
+def XMLParseToJSONEvents(xmlString):
+    root = ET.fromstring(xmlString)
+
+    resourcesList = []
+    for item in root.iter('classassignmentList'):
+        dictContext = {}
+        dictContext['id'] = '1'
+        desc = '1'
+        startingTime_str = '1'
+        endingTime_str = '1'
+        for item_childCA in item:
+            if item_childCA.tag == 'master':
+                for item_childCAmaster in item_childCA:
+                    if item_childCAmaster.tag == 'masterName':
+                        desc = item_childCAmaster.text
+            if item_childCA.tag == 'room':
+                for item_childCAroom in item_childCA:
+                    if item_childCAroom.tag == 'id':
+                        dictContext['resourceId'] = number_to_letter_mapping[int(item_childCAroom.text)]
+            if item_childCA.tag == 'timeslot':
+                for item_childCAtimeslot in item_childCA:
+                    if item_childCAtimeslot.tag == 'date':
+                        descStart = item_childCAtimeslot.text
+                        descEnd = item_childCAtimeslot.text
+                    if item_childCAtimeslot.tag == 'startingTime':
+                        startingTime_int = int(item_childCAtimeslot.text)
+                    if item_childCAtimeslot.tag == 'endingTime':
+                        endingTime_int = int(item_childCAtimeslot.text)
+                    if item_childCAtimeslot.tag == 'availableDurationMins':
+                        availableDurationMins_int = int(item_childCAtimeslot.text)
+                startingTime_str = descStart + " " + convertToTime(startingTime_int)
+                endingTime_str = descEnd + " " + convertToTime(startingTime_int + availableDurationMins_int - 15)
+                        
+            if item_childCA.tag == 'yogaclass':
+                for item_childCAyogacls in item_childCA:
+                    if item_childCAyogacls.tag == 'className':
+                        desc = desc + ', ' + item_childCAyogacls.text                   
+        dictContext['title'] = desc
+        dictContext['start'] = startingTime_str
+        dictContext['end'] = endingTime_str
+        resourcesList.append(dictContext)
+    return resourcesList
 
 def file(request):
     # This is the first html page
@@ -95,6 +212,7 @@ def createClassAssignmentObject(df):
         xml.append('      <id>{0}</id>'.format(index))
         xml.append('      <timeslot>')
         xml.append('        <id>{0}</id>'.format(index))
+        xml.append('        <date>{0}</date>'.format(row['date']))
         xml.append('        <day>{0}</day>'.format(row['day']))
         xml.append('        <shift>{0}</shift>'.format(row['shift']))
         startTimeInMins = convertToMins(str(row['startingTime']))
@@ -178,6 +296,21 @@ def convertToMins(time):
 
     return newTime
 
+def convertToTime(time):
+    import math
+    hour_int = math.floor(int(time) / 60)
+    if hour_int <= 9:
+        hour_str = "0" + str(hour_int)
+    else:
+        hour_str = str(hour_int)
+    min_int = int(time) % 60
+    if min_int <= 9:
+        min_str = "0" + str(min_int)
+    else:
+        min_str = str(min_int)
+    newTime = hour_str + ":" + min_str
+    return newTime
+
 def writePostXML(file_location):
 
     df = pd.read_excel(file_location)
@@ -200,9 +333,9 @@ def writePostXML(file_location):
     xml_problem += xml_Yoga_Rooms
     xml_problem.append('</planning-problem>')
 
-    f = open('testxml.xml','w')
-    f.write('\n'.join(xml_problem))
-    f.close()
+#    f = open('testxml.xml','w')
+#    f.write('\n'.join(xml_problem))
+#    f.close()
 
 #    print('\n'.join(xml_slotList));
 
