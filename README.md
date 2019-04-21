@@ -3,13 +3,14 @@
 <img width="812" alt="welcome" src="https://user-images.githubusercontent.com/48171290/54080819-80836a80-4333-11e9-9f1d-7f21123d454f.png">
 
 # SECTION 2 : EXECUTIVE SUMMARY / PAPER ABSTRACT
-With the overwhelming welcome for the yoga activity, A * yoga has opened its 5th new yoga studio in Singapore recently. It targets to provide 100+ different styles of yoga courses every week with experienced yoga masters and well decorated yoga rooms to customers. However, with the various yoga courses, complicated yoga master skills and available dates, it is very troublesome to plan a weekly yoga class schedule.
+With the overwhelming welcome for the yoga activity, A * yoga has opened its 5th new yoga studio in Singapore recently. It targets to provide 100+ different styles of yoga classes every week with experienced yoga masters and well decorated yoga rooms to customers. However, with the various yoga classes, complicated yoga master skills and available dates, it is very troublesome to plan a weekly yoga class schedule.
 
-Our group, containing 5 part-time students under reasoning system course, decided to take this chance to help A * yoga studio by applying knowledge we have learnt from the course. Hence, our group developed an automated scheduling system, Yoga Class Scheduling System, to generate a weekly yoga class schedule based on the default system data or data provided by user.
+Our group, containing 5 part-time students under reasoning system course, decided to take this chance to help A * yoga studio by applying knowledge we have learnt from the course. Hence, our group developed an automated scheduling system, Yoga Class Scheduling System (YOSS), to generate a weekly yoga class schedule based on the default system data or data provided by user.
 
-Inside the Yoga Class Scheduling System, we first set out to perform knowledge acquisition by interviewing a subject matter expert. To build the system, we decided to utilize Search and Rule-Based Reasoning as tools through Django web framework and KIE server to perform the scheduling task. What’s more, we have come out with a calendar user interface to display the scheduling results to users.
+Inside YOSS, we first set out to perform knowledge acquisition by interviewing a subject matter expert. To build the system, we decided to utilize Search and Rule-Based Reasoning as tools through Django web framework and KIE server to perform the scheduling task. What’s more, we have come out with a calendar user interface to display the scheduling results to users.
 
 Our team learned a lot in the process of working on this project. We got the chance to apply techniques, such as search algorithm and rule-based reasoning, which we learned in our lectures and workshops in this viable business application scenario, and also picked up technical skills which would surely prove useful in the future course of our work.
+
 
 # SECTION 3 : CREDITS / PROJECT CONTRIBUTION
 
