@@ -63,15 +63,13 @@ Go to URL using web browser http://127.0.0.1:8000/
 <Github File Link>  https://github.com/davidygp/IRS-MR-2019-01-19-IS1PT-GRP-MRCard/tree/master/ProjectReport/Report.pdf
 
 # SECTION 7 : MISCELLANEOUS
-MRCard Survey Result.xlsx
-+ Results of survey
-+ Insights derived, which helped on features selection that are subsequently used in our system
+Scheduling Data.xlsx
++ Full Scheduling Dataset
 
-Interview with Hu Juan.mps
-+ Audio of the interview process with domain expert
+Scheduling Data (simple case 1) .xlsx
+Scheduling Data (simple case 2) .xlsx
+Scheduling Data (simple case 3) .xlsx
++ Sample Scheduling Dataset
 
-Card Data - Bank Card Data (Cleaned_v2).csv
-+ Data that used in the backend 
-
-Data Fields - Sheet1.csv
-+ Variables that used in the backend and rules
+Scheduling Data (Wrong Format) .xlsx
++ Sample Scheduling Data with the wrong format (Note: will not work)
