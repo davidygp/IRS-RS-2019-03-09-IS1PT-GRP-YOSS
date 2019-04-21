@@ -48,7 +48,7 @@ $ git clone https://github.com/davidygp/IRS-RS-2019-03-09-IS1PT-GRP-YOSS
 
 ### Setup of KIE Server:
 1. Start KIE Server
-2. Unzip the file ./IRS-RS-2019-03-09-IS1PT-GRP-YOS/SystemCode/YogaClassScheduler1-2
+2. Unzip the file ./IRS-RS-2019-03-09-IS1PT-GRP-YOSS/SystemCode/YogaClassScheduler1-2
 3. Import the Project YogaClassScheduler-3
 4. Deploy the Project YogaClassScheduler-3
 
@@ -62,7 +62,7 @@ $ pip install requests
 
 ### Start Python django server:
 
-$ cd ./IRS-RS-2019-03-09-IS1PT-GRP-YOS/SystemCode
+$ cd ./IRS-RS-2019-03-09-IS1PT-GRP-YOSS/SystemCode
 
 $ python manage.py runserver
 
