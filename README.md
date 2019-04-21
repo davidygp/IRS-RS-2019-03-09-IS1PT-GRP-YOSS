@@ -26,35 +26,22 @@ Our team learned a lot in the process of working on this project. We got the cha
 
 
 # SECTION 5 : USER GUIDE
-[ 1 ] To run the system in any machine with anaconda 3 installed
+[ 1 ] Install additional necessary libraries. This application works in python 3 only.
+$ pip install pandas
+
+$ pip install django
+
+$ pip install requests
 
 $ git clone https://github.com/davidygp/IRS-MR-2019-01-19-IS1PT-GRP-MRCard
 
-$ cd ./IRS-MR-2019-01-19-IS1PT-GRP-MRCard/SystemCode
+$ cd ./IRS-RS-2019-03-09-IS1PT-GRP-YOS/SystemCode
 
-$ source activate ./venv/MRCard-env
-
-(MRCard-env) $ python manage.py runserver
+$ python manage.py runserver
 
 Go to URL using web browser http://127.0.0.1:8000/
 
-$ (MRCard-env) $ source deactivate
 
-[ 2 ] To run the system in other/local machine: Install additional necessary libraries. This application works in python 3 only.
-
-$ pip install anaconda 3 
-
-$ git clone https://github.com/davidygp/IRS-MR-2019-01-19-IS1PT-GRP-MRCard
-
-$ cd ./IRS-MR-2019-01-19-IS1PT-GRP-MRCard/SystemCode
-
-$ source activate ./venv/MRCard-env
-
-(MRCard-env) $ python manage.py runserver
-
-Go to URL using web browser http://127.0.0.1:8000/
-
-$ (MRCard-env) $ source deactivate
 
 # SECTION 6 : PROJECT REPORT / PAPER
 <Github File Link>  https://github.com/davidygp/IRS-MR-2019-01-19-IS1PT-GRP-MRCard/tree/master/ProjectReport/Report.pdf
