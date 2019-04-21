@@ -70,7 +70,7 @@ Go to URL using web browser http://127.0.0.1:8000/
 
 
 # SECTION 6 : PROJECT REPORT / PAPER
-<Github File Link>  https://github.com/davidygp/IRS-MR-2019-01-19-IS1PT-GRP-MRCard/tree/master/ProjectReport/Report.pdf
+<Github File Link>  https://github.com/davidygp/IRS-RS-2019-03-09-IS1PT-GRP-YOSS/tree/master/ProjectReport/Report.pdf
 
 # SECTION 7 : MISCELLANEOUS
 Scheduling Data.xlsx
