@@ -29,7 +29,7 @@ Our team learned a lot in the process of working on this project. We got the cha
 # SECTION 5 : USER GUIDE
 [ 1 ] Setup the Virtual Environment Setup the KIE Server environment. Install additional necessary libraries. Note: This application works in python 3 only.
 
-Installing Virtual Box:
+### Installing Virtual Box:
 1. Download and install Virtualbox software: https://www.virtualbox.org/wiki/Downloads
 2. Download and iss-vm virtual machine (an Appliance) from:
 
@@ -41,17 +41,18 @@ http://bit.ly/iss-vm-v18b ( part 2 about 13 GB in file size )
 4. Click File -> Import Appliance
 5. Click Start to use iss-vm
 
-Import the files:
+
+### Import the files:
 
 $ git clone https://github.com/davidygp/IRS-RS-2019-03-09-IS1PT-GRP-YOSS
 
-Setup of KIE Server:
+### Setup of KIE Server:
 1. Start KIE Server
 2. Unzip the file ./IRS-RS-2019-03-09-IS1PT-GRP-YOS/SystemCode/YogaClassScheduler1-2
 3. Import the Project YogaClassScheduler-3
 4. Deploy the Project YogaClassScheduler-3
 
-Setup of Python Environment:
+### Setup of Python Environment:
 
 $ pip install pandas
 
@@ -59,7 +60,7 @@ $ pip install django
 
 $ pip install requests
 
-Start the Python django server:
+### Start Python django server:
 
 $ cd ./IRS-RS-2019-03-09-IS1PT-GRP-YOS/SystemCode
 
